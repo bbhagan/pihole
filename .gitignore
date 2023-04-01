@@ -1,0 +1,5 @@
+etc-dnsmasq.d/
+etc-pihole/
+var-log/
+
+.DS_Store
