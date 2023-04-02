@@ -23,8 +23,8 @@ cp /srv/docker/pihole/uninstall-pihole-docker.sh .
 echo ' '
 echo 'Running docker containers'
 
-sudo systemctl enable pihole-docker-compose
-sudo systemctl start pihole-docker-compose
+sudo systemctl enable pihole-docker-compose &>> ./pihole_install.log
+sudo systemctl start pihole-docker-compose &>> ./pihole_install.log
 sudo systemctl status pihole-docker-compose &>> ./pihole_install.log
 
 #sleep is to make sure everything is totally up before testing
