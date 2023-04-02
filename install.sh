@@ -28,4 +28,5 @@ echo ' '
 sudo docker compose up -d
 
 echo ' '
-sudo docker logs pihole 2>&1 | grep random >> pihole_password.txt
+sleep 2
+echo "$(sudo docker logs pihole 2>&1 | grep random)"
