@@ -1,14 +1,11 @@
 #! /bin/bash
 
-echo ' '
 echo 'Running apt-get update'
-echo ' '
 sudo apt-get update &> /dev/null
 
 echo ' '
 echo 'Running apt-get upgrade'
-echo ' '
-sudo apt-get upgrade -y
+sudo apt-get upgrade -y &> /dev/null
 
 #echo 'install docker'
 #curl -fsSL https://get.docker.com -o get-docker.sh | bash
@@ -32,7 +29,7 @@ sleep 3
 
 echo ' '
 echo 'Test services'
-echo "$(dig @127.0.0.1 -p 5053 +short google.com)"
+echo "Google IP via cloudflared: $(dig @127.0.0.1 -p 5053 +short google.com)"
 echo "$(dig @127.0.0.1 +short google.com)"
 
 echo " "
