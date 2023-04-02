@@ -71,7 +71,7 @@ sudo systemctl status pihole-docker-compose
 test_services
 
 echo " "
-echo -e "Pi-hole UI password:$BOLD $GREEN $PASSWORD"
+echo -e "Pi-hole UI password:$BOLD $GREEN $PASSWORD $NORMAL"
 echo "Pi-hole UI: http://127.0.0.1/admin"
 
 
