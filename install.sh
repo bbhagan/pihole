@@ -34,7 +34,8 @@ fi
 
 echo " "
 echo "Install docker"
-curl -fsSL https://get.docker.com -o get-docker.sh | bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+bash get-docker.sh
 
 echo " "
 echo "Cloning repo"
