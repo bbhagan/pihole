@@ -63,6 +63,7 @@ sudo systemctl enable pihole-docker-compose &>> $INSTALL_LOG
 sudo systemctl start pihole-docker-compose &>> $INSTALL_LOG
 sleep 3 #sleep is to make sure everything is totally up before testing
 sudo systemctl status pihole-docker-compose &>> $INSTALL_LOG
+sudo systemctl status pihole-docker-compose
 
 test_services
 
