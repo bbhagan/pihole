@@ -1,12 +1,12 @@
 #! /bin/bash
 
 echo ' '
-echo 'apt-get update'
+echo 'Running apt-get update'
 echo ' '
 sudo apt-get update
 
 echo ' '
-echo 'apt-get upgrade'
+echo 'Running apt-get upgrade'
 echo ' '
 sudo apt-get upgrade -y
 
@@ -17,13 +17,13 @@ sudo apt-get upgrade -y
 #sudo usermod -aG docker $USER
 
 echo ' '
-echo 'cloning repo'
+echo 'Cloning repo'
 echo ' '
 git clone https://github.com/bbhagan/pihole
 
 cd pihole
 echo ' '
-echo 'running docker containers'
+echo 'Running docker containers'
 echo ' '
 sudo docker compose up -d
 
