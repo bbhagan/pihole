@@ -1,9 +1,8 @@
 #! /bin/bash
 
 INSTALL_INIT_PATH=$(pwd)
-echo "INSTALL_PATH: $INSTALL_INIT_PATH"
 INSTALL_LOG=$INSTALL_INIT_PATH/pihole_install.log
-echo "INSTALL_LOG: $INSTALL_LOG"
+echo "Install log: $INSTALL_LOG"
 
 test_services() {
 echo " "
