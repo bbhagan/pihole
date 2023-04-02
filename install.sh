@@ -5,6 +5,13 @@ echo "INSTALL_PATH: $INSTALL_INIT_PATH"
 INSTALL_LOG=$INSTALL_INIT_PATH/pihole_install.log
 echo "INSTALL_LOG: $INSTALL_LOG"
 
+test_services() {
+echo " "
+echo "Test services"
+echo "Google IP via cloudflared: $(dig @127.0.0.1 -p 5053 +short google.com)"
+echo "Google IP via pihole: $(dig @127.0.0.1 +short google.com)"
+}
+
 echo " "
 echo "Running apt-get update"
 sudo apt-get update &>> $INSTALL_LOG
@@ -24,9 +31,9 @@ cp /srv/docker/pihole/uninstall-pihole-docker.sh .
 
 echo ' '
 echo 'Booting docker containers'
-cd srv/docker/pihole
+cd /srv/docker/pihole
 sudo docker compose up -d
-test_services;
+test_services
 sudo docker compose down
 
 echo " "
@@ -38,17 +45,11 @@ sudo systemctl status pihole-docker-compose &>> $INSTALL_LOG
 #sleep is to make sure everything is totally up before testing
 sleep 5
 
-test_services;
+test_services
 
 echo " "
 echo "PASSWORD:"
 echo "$(sudo docker logs pihole 2>&1 | grep random)"
 
-test_services() {
-echo " "
-echo "Test services"
-echo "Google IP via cloudflared: $(dig @127.0.0.1 -p 5053 +short google.com)"
-echo "Google IP via pihole: $(dig @127.0.0.1 +short google.com)"
-}
 
 
