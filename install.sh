@@ -35,7 +35,7 @@ fi
 echo " "
 echo "Install docker"
 curl -fsSL https://get.docker.com -o get-docker.sh
-bash get-docker.sh
+bash get-docker.sh &>> $INSTALL_LOG
 
 echo " "
 echo "Cloning repo"
