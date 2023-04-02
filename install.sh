@@ -21,7 +21,7 @@ sudo apt-get upgrade -y &>> $INSTALL_LOG
 
 echo " "
 echo "Install DNS utilities"
-sudo apt-get install dnsutils
+sudo apt-get install dnsutils -y &>> $INSTALL_LOG
 
 echo " "
 echo "Install docker"
