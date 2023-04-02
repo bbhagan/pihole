@@ -18,4 +18,4 @@ echo 'running docker containers'
 sudo docker compose up -d
 
 echo ' '
-echo 'pihole password: $(sudo docker logs pihole 2>&1 | grep 'random')'
+echo 'pihole password: $(sudo docker logs pihole 2>&1 | grep random)'
