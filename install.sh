@@ -1,5 +1,8 @@
 #! /bin/bash
 
+GREEN="\033[32m"
+NORMAL="\033[0;39m"
+BOLD="${Esc}[0;1m"
 INSTALL_INIT_PATH=$(pwd)
 INSTALL_LOG=$INSTALL_INIT_PATH/pihole_install.log
 echo "Install log: $INSTALL_LOG"
@@ -68,7 +71,7 @@ sudo systemctl status pihole-docker-compose
 test_services
 
 echo " "
-echo "Pi-hole UI password:$PASSWORD"
+echo "Pi-hole UI password:$GREEN $BOLD $PASSWORD"
 echo "Pi-hole UI: http://127.0.0.1/admin"
 
 
