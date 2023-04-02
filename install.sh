@@ -32,8 +32,8 @@ sleep 3
 
 echo ' '
 echo 'Test services'
-echo 'Google IP via cloudflared: $(dig @127.0.0.1 -p 5053 +short google.com)'
-echo 'Google IP via pihole: $(dig @127.0.0.1 +short google.com)'
+echo "Google IP via cloudflared: $(dig @127.0.0.1 -p 5053 +short google.com)"
+echo "Google IP via pihole: $(dig @127.0.0.1 +short google.com)"
 
 echo ' '
 echo 'PASSWORD:'
