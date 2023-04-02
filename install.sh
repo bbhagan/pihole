@@ -32,23 +32,22 @@ echo ' '
 echo 'Booting docker containers'
 cd /srv/docker/pihole
 sudo docker compose up -d
+sleep 3 #sleep is to make sure everything is totally up before testing
 test_services
+PASSWORD=$(sudo docker logs pihole 2>&1 | grep random)
 sudo docker compose down
 
 echo " "
 echo "Making a service and starting"
 sudo systemctl enable pihole-docker-compose &>> $INSTALL_LOG
 sudo systemctl start pihole-docker-compose &>> $INSTALL_LOG
+sleep 3 #sleep is to make sure everything is totally up before testing
 sudo systemctl status pihole-docker-compose &>> $INSTALL_LOG
-
-#sleep is to make sure everything is totally up before testing
-sleep 5
 
 test_services
 
 echo " "
-echo "PASSWORD:"
-echo "$(sudo docker logs pihole 2>&1 | grep random)"
+echo "PASSWORD:$PASSWORD"
 
 
 
