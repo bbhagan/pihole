@@ -19,4 +19,4 @@ sudo docker compose up -d
 
 echo ' '
 echo 'pihole password'
-echo sudo docker logs pihole 2>&1 | grep random
+sudo docker logs pihole 2>&1 | grep 'random'
