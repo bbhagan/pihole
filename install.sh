@@ -1,14 +1,12 @@
 #! /bin/bash
 
-echo 'Cloning repo'
-git clone https://github.com/bbhagan/pihole &> ./pihole_install.log
-
+echo ' '
 echo 'Running apt-get update'
-sudo apt-get update &> ./pihole_install.log
+sudo apt-get update &>> ./pihole_install.log
 
 echo ' '
 echo 'Running apt-get upgrade'
-sudo apt-get upgrade -y &> ./pihole_install.log
+sudo apt-get upgrade -y &>> ./pihole_install.log
 
 #echo 'install docker'
 #curl -fsSL https://get.docker.com -o get-docker.sh | bash
@@ -16,13 +14,21 @@ sudo apt-get upgrade -y &> ./pihole_install.log
 #echo 'give docker permissions'
 #sudo usermod -aG docker $USER
 
-cd pihole
+echo ' '
+echo 'Cloning repo'
+sudo git clone https://github.com/bbhagan/pihole /srv/docker/pihole &>> ./pihole_install.log
+sudo cp /srv/docker/pihole/pihole-docker-compose.service /etc/systemd/system/pihole-docker-compose.service
+cp /srv/docker/pihole/uninstall-pihole-docker.sh .
+
 echo ' '
 echo 'Running docker containers'
-sudo docker compose up -d
+
+sudo systemctl enable pihole-docker-compose
+sudo systemctl start pihole-docker-compose
+sudo systemctl status pihole-docker-compose &>> ./pihole_install.log
 
 #sleep is to make sure everything is totally up before testing
-sleep 3
+sleep 5
 
 echo ' '
 echo 'Test services'
@@ -33,4 +39,3 @@ echo " "
 echo "PASSWORD:"
 echo "$(sudo docker logs pihole 2>&1 | grep random)"
 
-cp ../pihole_install.log .
