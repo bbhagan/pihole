@@ -16,6 +16,10 @@ echo "Running apt-get update"
 sudo apt-get update &>> $INSTALL_LOG
 
 echo " "
+echo "Running apt-get autoremove"
+sudo apt-get autoremove -y &>> $INSTALL_LOG
+
+echo " "
 echo "Running apt-get upgrade"
 sudo apt-get upgrade -y &>> $INSTALL_LOG
 
