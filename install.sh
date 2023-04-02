@@ -24,21 +24,26 @@ echo "Running apt-get upgrade"
 sudo apt-get upgrade -y &>> $INSTALL_LOG
 
 echo " "
-echo "Install DNS utilities"
-sudo apt-get install dnsutils -y &>> $INSTALL_LOG
+if [ -e "/usr/bin/dig" ]
+then
+    echo "Not installing dnsutils"
+else
+    echo "Install dnsutils"
+    sudo apt-get install dnsutils -y &>> $INSTALL_LOG
+fi
 
 echo " "
 echo "Install docker"
-curl -fsSL https://get.docker.com -o get-docker.sh | bash &>> $INSTALL_LOG
+curl -fsSL https://get.docker.com -o get-docker.sh | bash
 
-echo ' '
-echo 'Cloning repo'
+echo " "
+echo "Cloning repo"
 sudo git clone https://github.com/bbhagan/pihole /srv/docker/pihole &>> $INSTALL_LOG
 sudo cp /srv/docker/pihole/pihole-docker-compose.service /etc/systemd/system/pihole-docker-compose.service
 cp /srv/docker/pihole/uninstall-pihole-docker.sh .
 
-echo ' '
-echo 'Booting docker containers'
+echo " "
+echo "Booting docker containers"
 cd /srv/docker/pihole
 sudo docker compose up -d
 sleep 3 #sleep is to make sure everything is totally up before testing
