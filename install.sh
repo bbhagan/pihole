@@ -19,8 +19,13 @@ echo " "
 echo "Running apt-get upgrade"
 sudo apt-get upgrade -y &>> $INSTALL_LOG
 
-#echo 'install docker'
-#curl -fsSL https://get.docker.com -o get-docker.sh | bash
+echo " "
+echo "Install DNS utilities"
+sudo apt-get install dnsutils
+
+echo " "
+echo "Install docker"
+curl -fsSL https://get.docker.com -o get-docker.sh | bash &>> $INSTALL_LOG
 
 echo ' '
 echo 'Cloning repo'
