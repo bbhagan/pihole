@@ -1,14 +1,16 @@
 #! /bin/bash
 
 PATH=$(pwd)
+echo "PATH: $PATH"
 INSTALL_LOG=$PATH/pihole_install.log
+echo "INSTALL_LOG: $INSTALL_LOG"
 
 echo " "
-echo 'Running apt-get update'
+echo "Running apt-get update"
 sudo apt-get update &>> $INSTALL_LOG
 
 echo " "
-echo 'Running apt-get upgrade'
+echo "Running apt-get upgrade"
 sudo apt-get upgrade -y &>> $INSTALL_LOG
 
 #echo 'install docker'
