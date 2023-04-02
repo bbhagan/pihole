@@ -33,9 +33,14 @@ else
 fi
 
 echo " "
-echo "Install docker"
-curl -fsSL https://get.docker.com -o get-docker.sh
-bash get-docker.sh &>> $INSTALL_LOG
+if [ -e "/usr/bin/docker" ]
+then
+    echo "Not installing docker"
+else
+    echo "Install docker"
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    bash get-docker.sh &>> $INSTALL_LOG
+fi
 
 echo " "
 echo "Cloning repo"
@@ -62,7 +67,8 @@ sudo systemctl status pihole-docker-compose &>> $INSTALL_LOG
 test_services
 
 echo " "
-echo "PASSWORD:$PASSWORD"
+echo "Pi-hole UI password:$PASSWORD"
+echo "Pi-hole UI: http://127.0.0.1/admin"
 
 
 
