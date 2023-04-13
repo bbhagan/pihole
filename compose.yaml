@@ -38,6 +38,17 @@ services:
       pihole_network:
         ipv4_address: '192.168.10.10'
 
+  speedtest:
+    image: openspeedtest/latest:latest
+    container_name: openspeedtest
+    ports:
+      - '3000:3000/tcp'
+      - '3001:3001/tcp'
+    restart: unless-stopped
+    networks:
+      pihole_network:
+        ipv4_address: '192.168.10.12'
+
 networks:
   pihole_network:
     ipam:
