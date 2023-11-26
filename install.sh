@@ -23,8 +23,8 @@ echo "Running apt-get autoremove"
 sudo apt-get autoremove -y &>> $INSTALL_LOG
 
 echo " "
-echo "Running apt-get upgrade"
-sudo apt-get upgrade -y &>> $INSTALL_LOG
+echo "Running apt-get dist-upgrade"
+sudo apt-get dist-upgrade -y &>> $INSTALL_LOG
 
 echo " "
 if [ -e "/usr/bin/dig" ]
