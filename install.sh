@@ -16,7 +16,7 @@ echo "Google IP via pihole: $(dig @127.0.0.1 +short google.com)"
 
 echo " "
 echo "Adding hard DNS Servers"
-sudo nmcli connection modify "Wired connection 1" ipv4.dns "1.1.1.1,8.8.8.8"
+sudo nmcli connection modify "Wired connection 1" ipv4.dns "1.1.1.1,8.8.8.8,9.9.9.9"
 sleep 1
 echo "Local DNS Servers:"
 nmcli connection show "Wired connection 1" | grep "ipv4.dns:"
