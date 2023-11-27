@@ -46,10 +46,19 @@ else
 fi
 
 echo " "
-echo "Cloning repo"
+echo "Cloning repo, copying, moving files"
 sudo git clone https://github.com/bbhagan/pihole /srv/docker/pihole &>> $INSTALL_LOG
 sudo cp /srv/docker/pihole/pihole-docker-compose.service /etc/systemd/system/pihole-docker-compose.service
+sudo cp /srv/docker/pihole/piholerfkillall.sh /usr/local/bin/piholerfkillall.sh
+sudo cp /srv/docker/pihole/rfkill.service /etc/systemd/system/rfkill.service
 cp /srv/docker/pihole/uninstall-pihole-docker.sh .
+
+echo " "
+echo "RFKill service and starting"
+sudo systemctl enable rfkill &>> $INSTALL_LOG
+sudo systemctl start rfkill &>> $INSTALL_LOG
+sleep 3 #sleep is to make sure everything is totally up before testing
+rfkill
 
 echo " "
 echo "Booting docker containers"

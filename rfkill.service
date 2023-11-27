@@ -1,0 +1,12 @@
+[Unit]
+Description=Kill Wifi and Bluetooth Service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/piholerfkillall.sh
+ExecStop=/usr/local/bin/piholerfkillall.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
