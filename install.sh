@@ -55,6 +55,7 @@ cp /srv/docker/pihole/uninstall-pihole-docker.sh .
 
 echo " "
 echo "RFKill service and starting"
+rfkill
 sudo systemctl enable rfkill &>> $INSTALL_LOG
 sudo systemctl start rfkill &>> $INSTALL_LOG
 sleep 3 #sleep is to make sure everything is totally up before testing
