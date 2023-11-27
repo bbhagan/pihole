@@ -1,6 +1,6 @@
 #! /bin/bash
 
-sleep 2
+sleep 1
 rfkill block bluetooth
-sleep 2
+sleep 1
 rfkill block wifi
