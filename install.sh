@@ -26,12 +26,12 @@ echo "Running apt-get update"
 sudo apt-get update &>> $INSTALL_LOG
 
 echo " "
-echo "Running apt-get autoremove"
-sudo apt-get autoremove -y &>> $INSTALL_LOG
-
-echo " "
 echo "Running apt-get dist-upgrade"
 sudo apt-get dist-upgrade -y &>> $INSTALL_LOG
+
+echo " "
+echo "Running apt-get autoremove"
+sudo apt-get autoremove -y &>> $INSTALL_LOG
 
 echo " "
 if [ -e "/usr/bin/dig" ]
