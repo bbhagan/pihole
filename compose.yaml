@@ -10,7 +10,7 @@ services:
       - 'cloudflared'
     environment:
       - TZ='America/Los Angeles'
-      - PIHOLE_DNS_=192.168.10.10#5053
+      - FTLCONF_dns_upstreams=192.168.10.10#5053
     volumes:
       - ./etc-pihole:/etc/pihole
       - ./etc-dnsmasq.d:/etc/sndmasq.d
