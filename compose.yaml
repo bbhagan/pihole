@@ -11,6 +11,7 @@ services:
     environment:
       - TZ='America/Los Angeles'
       - FTLCONF_dns_upstreams=192.168.10.10#5053
+      - FTLCONF_dnsmasq_listening=all
     volumes:
       - ./etc-pihole:/etc/pihole
       - ./etc-dnsmasq.d:/etc/sndmasq.d
